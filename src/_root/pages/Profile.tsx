@@ -14,6 +14,7 @@ import { LikedPost } from '.';
 import { useGetUserById } from '@/lib/react-query/queries';
 import Username from '@/components/shared/Username';
 import { useToast } from '@/components/ui/use-toast';
+import { ImageIcon } from '@radix-ui/react-icons';
 
 type StabBlockProps = {
   value: string | number;
@@ -118,12 +119,7 @@ const Profile = () => {
               pathname === `/profile/${id}` && '!bg-dark-3'
             }`}
           >
-            <img
-              src={'/assets/icons/posts.svg'}
-              alt="posts"
-              width={20}
-              height={20}
-            />
+            <ImageIcon width={20} height={20} className="text-primary-500" />
             Posts
           </Link>
           <Link
