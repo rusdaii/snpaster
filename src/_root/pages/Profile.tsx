@@ -108,7 +108,6 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        H
       </div>
 
       {currentUser.$id === user.id && (
