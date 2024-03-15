@@ -10,7 +10,11 @@ export const signUpValidation = z.object({
   username: z
     .string()
     .min(2, { message: 'Username must be at least 2 characters.' })
-    .max(50),
+    .max(50)
+    .regex(
+      /^[a-z0-9_]+$/,
+      'Username can only contain lowercase, numbers, and underscores.'
+    ),
 
   email: z.string().email({ message: 'Invalid email address.' }),
   password: z
