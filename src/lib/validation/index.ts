@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+const MAX_FILE_SIZE = 1024 * 1024 * 5;
+
 export const signUpValidation = z.object({
   name: z
     .string()
@@ -26,9 +28,15 @@ export const signInValidation = z.object({
 export const postValidation = z.object({
   caption: z
     .string()
-    .min(5, { message: 'Caption must be at least 5 characters.' })
     .max(2200, { message: 'Caption must be less than 2200 characters.' }),
-  file: z.custom<File[]>(),
+  file: z
+    .custom<File[]>()
+    .refine((files) => files.length > 0, {
+      message: 'Please select a file.',
+    })
+    .refine((files) => files[0]?.size <= MAX_FILE_SIZE, {
+      message: 'File size must be less than 5MB.',
+    }),
   location: z.string(),
   tags: z.string(),
 });
