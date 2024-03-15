@@ -59,7 +59,9 @@ const FileUploader = ({ fieldChange, mediaUrl }: FileUploaderProps) => {
 
           <p className="text-light-4 small-regular mb-6">SVG, PNG, JPG</p>
 
-          <Button className="shad-button_dark_4">Browse File</Button>
+          <Button className="shad-button_dark_4" type="button">
+            Browse File
+          </Button>
         </div>
       )}
     </div>
