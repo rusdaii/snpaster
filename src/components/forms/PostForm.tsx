@@ -13,7 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '../ui/textarea';
 import FileUploader from '../shared/FileUploader';
-import { postValidation } from '@/lib/validation';
+import { postValidation, updatePostValidation } from '@/lib/validation';
 import { Models } from 'appwrite';
 import { useCreatePost, useUpdatePost } from '@/lib/react-query/queries';
 import { useUserContext } from '@/context/AuthContext';
@@ -41,7 +41,9 @@ const PostForm = ({ post, action }: PostFormProps) => {
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof postValidation>>({
-    resolver: zodResolver(postValidation),
+    resolver: zodResolver(
+      action === 'update' ? updatePostValidation : postValidation
+    ),
     defaultValues: {
       caption: post ? post?.caption : '',
       file: [],
@@ -177,7 +179,11 @@ const PostForm = ({ post, action }: PostFormProps) => {
               <span>{action === 'create' ? 'Post' : 'Update'}</span>
             )}
           </Button>
-          <Button type="button" className="shad-button_dark_4">
+          <Button
+            type="button"
+            className="shad-button_dark_4"
+            onClick={() => navigate(-1)}
+          >
             Cancel
           </Button>
         </div>
