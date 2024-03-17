@@ -291,7 +291,7 @@ export const getPostById = async (postId: string) => {
 };
 
 export const updatePost = async (post: IUpdatePost) => {
-  const hasFileToUpdate = post.file.length > 0;
+  const hasFileToUpdate = post.file?.length > 0;
 
   try {
     let image = {
