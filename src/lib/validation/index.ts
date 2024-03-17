@@ -45,6 +45,26 @@ export const postValidation = z.object({
   tags: z.string(),
 });
 
+export const updatePostValidation = z.object({
+  caption: z
+    .string()
+    .max(2200, { message: 'Caption must be less than 2200 characters.' }),
+  file: z.custom<File[]>().superRefine((files, ctx) => {
+    if (files.length > 0) {
+      if (files[0].size > MAX_FILE_SIZE) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'File size must be less than 5MB.',
+        });
+      }
+    }
+
+    return true;
+  }),
+  location: z.string(),
+  tags: z.string(),
+});
+
 export const ProfileValidation = z.object({
   file: z.custom<File[]>(),
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
