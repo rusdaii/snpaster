@@ -16,14 +16,9 @@ const Topbar = () => {
 
   return (
     <section className="topbar">
-      <div className="flex-between py-4 px-5">
-        <Link to="/" className="flex gap-3 items-center">
-          <img
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={130}
-            height={325}
-          />
+      <div className="px-5 py-4 flex-between">
+        <Link to="/" className="flex items-center justify-center gap-3">
+          <h1 className="text-4xl font-allura">Constgram</h1>
         </Link>
         <div className="flex gap-4">
           <Button
@@ -34,11 +29,11 @@ const Topbar = () => {
             <img src="/assets/icons/logout.svg" alt="" />
           </Button>
 
-          <Link to={`/profile/${user.id}`} className="flex-center gap-3">
+          <Link to={`/profile/${user.id}`} className="gap-3 flex-center">
             <img
               src={user.imageUrl || '/assets/images/profile-placeholder.svg'}
               alt="profile"
-              className="h-8 w-8 rounded-full"
+              className="w-8 h-8 rounded-full"
             />
           </Link>
         </div>

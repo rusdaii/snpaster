@@ -25,16 +25,11 @@ const LeftSidebar = () => {
   return (
     <nav className="leftsidebar">
       <div className="flex flex-col gap-11">
-        <Link to="/" className="flex gap-3 items-center">
-          <img
-            src="/assets/images/logo.svg"
-            alt="logo"
-            width={170}
-            height={36}
-          />
+        <Link to="/" className="flex items-center justify-center gap-3">
+          <h1 className="text-5xl font-allura">Constgram</h1>
         </Link>
 
-        <Link to={`/profile/${user.id}`} className="flex gap-3 items-center">
+        <Link to={`/profile/${user.id}`} className="flex items-center gap-3">
           {user.id === '' ? (
             <AvatarLoader />
           ) : (
@@ -42,7 +37,7 @@ const LeftSidebar = () => {
               <img
                 src={user.imageUrl || '/assets/icons/profile-placeholder.svg'}
                 alt="profile"
-                className="h-14 w-14 rounded-full"
+                className="rounded-full h-14 w-14"
               />
               <div className="flex flex-col">
                 <p className="body-bold">{user.name}</p>
@@ -75,7 +70,7 @@ const LeftSidebar = () => {
                 >
                   <NavLink
                     to={link.route}
-                    className="flex gap-4 items-center p-4"
+                    className="flex items-center gap-4 p-4"
                   >
                     <img
                       src={link.imgURL}
@@ -94,7 +89,7 @@ const LeftSidebar = () => {
       </div>
 
       {user.id === '' ? (
-        <Skeleton className="h-10 w-full" />
+        <Skeleton className="w-full h-10" />
       ) : (
         <Button
           variant="ghost"

@@ -14,6 +14,9 @@ const config = {
         '2xl': '1400px',
       },
     },
+    fontFamily: {
+      allura: ['Allura', 'cursive'],
+    },
     extend: {
       colors: {
         'primary-500': '#5b21b6',
